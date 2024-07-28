@@ -1,39 +1,100 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Masked Boxed Input
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A Flutter package to create masked input fields with individual character blocks. This is particularly useful for inputs like masked numbers or other formatted text inputs.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Individual character input fields
+- Customizable decorations for each input field
+- Supports different input masks
+- Handles backspace and focus management
+- Customizable keyboard type
 
-## Getting started
+## Browser
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+![alt browser]("C:\Users\adila\Videos\Screen Recordings\Screen Recording 2024-07-28 203526.mp4")
+
+## Parameters
+
+### `MaskedBoxedInput`
+
+| Parameter             | Type                        | Default Value                                                                                               | Description                                                                                             |
+|-----------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| `mask`                | `String`                    | `required`                                                                                                  | The mask pattern for the input. Use `#` for input fields and any other character for static content.   |
+| `controller`          | `TextEditingController?`    | `null`                                                                                                      | Optional main text controller to get the full input text.                                               |
+| `boxDecorations`      | `List<BoxDecoration>`       | `const []`                                                                                                  | List of box decorations for each input field.                                                           |
+| `height`              | `double`                    | `50`                                                                                                        | Height of each input field.                                                                             |
+| `width`               | `double`                    | `20`                                                                                                        | Width of each input field.                                                                              |
+| `inputDecorations`    | `List<InputDecoration>?`    | `const []`                                                                                                  | List of input decorations for each input field.                                                         |
+| `inputDecoration`     | `InputDecoration?`          | `const InputDecoration(...)`                                                                                | Default input decoration for all input fields.                                                          |
+| `boxDecoration`       | `BoxDecoration?`            | `null`                                                                                                      | Default box decoration for all input fields.                                                            |
+| `keyboardType`        | `TextInputType`             | `TextInputType.number`                                                                                      | Keyboard type for the input fields.                                                                     |
+| `sizeOfDivider`       | `double`                    | `10`                                                                                                        | Size of the divider between static characters.                                                          |
+| `mainAxisSpacing`     | `double`                    | `0.0`                                                                                                       | Spacing between each input field.                                                                       |
+| `sizeOfOtherCharaters`| `double`                    | `15`                                                                                                        | Size of static characters in the mask.                                                                  |
+| `onChange`            | `void Function(String)?`    | `null`                                                                                                      | Callback function when the input changes.                                                               |
+| `onKeyEvent`          | `void Function(KeyEvent)?`  | `null`                                                                                                      | Callback function for key events.                                                                       |
+
+### `OneCharField`
+
+| Parameter         | Type                      | Default Value       | Description                                                                 |
+|-------------------|---------------------------|---------------------|-----------------------------------------------------------------------------|
+| `onChange`        | `void Function(String)?`  | `required`          | Callback function when the input changes.                                   |
+| `onKeyEvent`      | `void Function(KeyEvent)?`| `null`              | Callback function for key events.                                           |
+| `focusNode`       | `FocusNode`               | `required`          | Focus node for the input field.                                             |
+| `focus`           | `FocusNode?`              | `null`              | Optional parent focus node for managing keyboard events.                    |
+| `controller`      | `TextEditingController?`  | `null`              | Controller for the input field.                                             |
+| `boxDecoration`   | `BoxDecoration?`          | `null`              | Box decoration for the input field.                                         |
+| `height`          | `double`                  | `required`          | Height of the input field.                                                  |
+| `width`           | `double`                  | `required`          | Width of the input field.                                                   |
+| `inputDecoration` | `InputDecoration?`        | `null`              | Input decoration for the input field.                                       |
+| `textInputType`   | `TextInputType`           | `required`          | Keyboard type for the input field.                                          |
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
-```
+import 'package:flutter/material.dart';
+import 'package:masked_boxed_field/masked_boxed_field.dart';
 
-## Additional information
+void main() {
+  runApp(const MyApp());
+}
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Masked Boxed Input Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Masked Boxed Input Demo'),
+      ),
+      body: Center(
+        child: MaskedBoxedInput(
+          mask: '###-###-####',
+          onChange: (value) {
+            print('Input changed: $value');
+          },
+          onKeyEvent: (event) {
+            print('Key event: $event');
+          },
+        ),
+      ),
+    );
+  }
+}
