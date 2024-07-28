@@ -12,7 +12,7 @@ A Flutter package to create masked input fields with individual character blocks
 
 ## Browser
 
-![alt browser]("C:\Users\adila\Videos\Screen Recordings\Screen Recording 2024-07-28 203526.mp4")
+https://github.com/user-attachments/assets/9d9c5211-530d-4f2a-82f3-a90167e5ad09
 
 ## Parameters
 
