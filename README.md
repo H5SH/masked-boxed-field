@@ -2,10 +2,6 @@
 
 A Flutter package to create masked input fields with individual character blocks. This is particularly useful for inputs like masked numbers or other formatted text inputs.
 
-## Demo
-
-![Getting Started]("C:\Users\adila\Pictures\Screenshots\Screenshot 2024-07-29 020155.png")
-
 ## Features
 
 - Individual character input fields
