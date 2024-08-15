@@ -2,6 +2,10 @@
 
 A Flutter package to create masked input fields with individual character blocks. This is particularly useful for inputs like masked numbers or other formatted text inputs.
 
+## Demo
+
+![Getting Started]("C:\Users\adila\Pictures\Screenshots\Screenshot 2024-07-29 020155.png")
+
 ## Features
 
 - Individual character input fields
@@ -80,6 +84,9 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    TextEditingController _controller = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Masked Boxed Input Demo'),
@@ -87,6 +94,7 @@ class MyHomePage extends StatelessWidget {
       body: Center(
         child: MaskedBoxedInput(
           mask: '###-###-####',
+          constroller: _controller
           onChange: (value) {
             print('Input changed: $value');
           },

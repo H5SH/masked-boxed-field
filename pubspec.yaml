@@ -1,7 +1,7 @@
 name: masked_boxed_field
-description: "A new Flutter package project."
+description: "A Blocked Masked Input Field"
 version: 0.0.1
-homepage:
+homepage: https://github.com/H5SH/flutter-todo.git
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
